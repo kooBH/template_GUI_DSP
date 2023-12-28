@@ -1,0 +1,22 @@
+{
+    "input_channels": {
+        "type": "int",
+        "value": 2
+    },
+    "input_device": {
+        "type": "int",
+        "value": 11
+    },
+    "output_device": {
+        "type": "int",
+        "value": 0
+    },
+    "samplerate": {
+        "options": [
+            16000,
+            48000
+        ],
+        "type": "option",
+        "value": 48000
+    }
+}
