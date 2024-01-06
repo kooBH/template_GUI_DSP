@@ -32,6 +32,8 @@ public :
   KPlotStreamer(int width,int height, int n_hop, int n_disp);
   ~KPlotStreamer();
 
+  void SetColormapRange(int c_max, int c_min);
+
 public slots : 
   void slot_update(short *data);
 

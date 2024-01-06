@@ -60,3 +60,10 @@ void KPlotStreamer::slot_update(short* buf) {
   stream_spec_estim.Stream(buffer[1]);
 
 }
+
+void KPlotStreamer::SetColormapRange(int c_max, int c_min) {
+  stream_spec_noisy.color_max = c_max;
+  stream_spec_noisy.color_min = c_min;
+  stream_spec_estim.color_max = c_max;
+  stream_spec_estim.color_min = c_min;
+}

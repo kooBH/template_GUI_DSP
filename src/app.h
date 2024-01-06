@@ -25,6 +25,7 @@ private:
   QVBoxLayout layout_main;
   QHBoxLayout layout_top;
   QPushButton btn_play;
+  QPushButton btn_load;
 
   QTabWidget widget_main;
   WidgetConfig widget_config;

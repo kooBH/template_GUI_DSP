@@ -15,6 +15,7 @@ include(${CMAKE_CURRENT_LIST_DIR}/lib/STFT/cpp/STFT_cpp.cmake)
 
 include(${CMAKE_CURRENT_LIST_DIR}/lib/KSpecStream/KSpecStream.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/lib/RtAudioWrapper/RtAudio.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/lib/WAV/WAV.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/lib/KJsonConfig/KJsonConfig.cmake)
 
 macro(display_elements

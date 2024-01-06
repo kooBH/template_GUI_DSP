@@ -13,3 +13,6 @@
 [submodule "bin"]
 	path = bin
 	url = https://github.com/kooBH/QtBin.git
+[submodule "lib/WAV"]
+	path = lib/WAV
+	url = https://github.com/koobh/WAV

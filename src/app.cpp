@@ -4,13 +4,15 @@ app::app():
     widget_disp(640,256,512,400)
   {
   setStyleSheet("\
-			QWidget{background:rgb(212, 251, 206);}\
+			QWidget{background:rgb(235, 250, 235);}\
       \
       ");
 
     /* top widget */{
     layout_top.addWidget(&btn_play);
     btn_play.setText("Play");
+    layout_top.addWidget(&btn_load);
+    btn_load.setText("Load");
 
     // Param Edits
     /*
@@ -25,11 +27,26 @@ app::app():
     QObject::connect(&proc, &processor::signal_update, &widget_disp, &KPlotStreamer::slot_update);
     /* Processor */
     QObject::connect(&btn_play, &QPushButton::pressed, &proc, &processor::slot_toggle);
+
+    QObject::connect(&btn_load, &QPushButton::clicked, [&]() {
+      QString fileName;
+      QFileDialog dialog;
+
+      /* signal - slot for import button */
+      fileName = dialog.getOpenFileName(this,
+        tr("Open Wav File"), ".", tr("something (*.wav)"));
+      if (!fileName.isEmpty()){
+        emit(signal_load(fileName));
+        setProcParam();
+       }
+      }
+    );
+    QObject::connect(this, &app::signal_load, &proc, &processor::slot_load);
   }
 
   /* main widget */{
     widget_main.setStyleSheet("\
-			QWidget{background:rgb(233, 250, 206);}\
+			QWidget{background:rgb(220, 250, 220);}\
       \
       ");
 
@@ -46,11 +63,14 @@ app::app():
     
 
     widget_config.Add("Input/Output", "../config/io.json");
+    widget_config.Add("colormap", "../config/display.json");
     layout_main.addWidget(&widget_main);
   }
 
   setMinimumSize(640,480);
   setLayout(&layout_main);
+
+  // Apply param
 };
 
 app::~app() {
@@ -93,6 +113,8 @@ void app::slot_btn_play() {
 
  void app::setProcParam() {
    proc.device_in = static_cast<int>(get("Input/Output", "input_device"));
+   proc.multiple = static_cast<double>(get("Input/Output", "multiple"));
+   widget_disp.SetColormapRange(get("colormap", "color_max"), get("colormap", "color_min"));
 
  }
 

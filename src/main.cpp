@@ -3,10 +3,10 @@
 
 int main(int argc, char*argv[]){
 #ifdef _WIN32
-#ifdef NDEBUG
-//	ShowWindow(::GetConsoleWindow(), SW_HIDE);
-	ShowWindow(::GetConsoleWindow(), SW_SHOW);
-#endif
+      #ifdef NDEBUG
+      //	ShowWindow(::GetConsoleWindow(), SW_HIDE);
+        ShowWindow(::GetConsoleWindow(), SW_SHOW);
+      #endif
 #endif
 
 	QCoreApplication::addLibraryPath(".");
